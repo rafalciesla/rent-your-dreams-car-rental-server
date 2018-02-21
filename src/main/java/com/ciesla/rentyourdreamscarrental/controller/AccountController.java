@@ -36,6 +36,18 @@ public class AccountController {
         return account;
     }
 
+    @CrossOrigin(origins = "http://localhost:8383")
+    @PostMapping("/mailcheck")
+    public ResponseEntity<String> mailCheck(@RequestBody String email) {
+        Account account = accountService.showAccountByEmail(email);
+        if(account == null) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.FOUND);
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:8383")
     @PostMapping("/register")
     public ResponseEntity<String> registerAccount(@RequestBody Account account) {
         accountService.save(account);
