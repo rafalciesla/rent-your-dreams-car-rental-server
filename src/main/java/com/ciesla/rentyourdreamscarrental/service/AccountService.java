@@ -2,19 +2,23 @@ package com.ciesla.rentyourdreamscarrental.service;
 
 import com.ciesla.rentyourdreamscarrental.entity.Account;
 import com.ciesla.rentyourdreamscarrental.repository.AccountRepository;
+import com.ciesla.rentyourdreamscarrental.repository.RentalRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 public class AccountService {
 
     private final AccountRepository accountRepository;
+    private final RentalRequestRepository rentalRequestRepository;
 
     @Autowired
-    public AccountService(AccountRepository accountRepository) {
+    public AccountService(AccountRepository accountRepository, RentalRequestRepository rentalRequestRepository) {
         this.accountRepository = accountRepository;
+        this.rentalRequestRepository = rentalRequestRepository;
     }
 
     public List<Account> showAllAccounts() {
@@ -36,5 +40,10 @@ public class AccountService {
 
     public void updateAccount(Account account) {
         accountRepository.save(account);
+    }
+
+    @Transactional
+    public void deleteRequestsByAccountId(Integer id) {
+        rentalRequestRepository.deleteRentalRequestsByAccountId(id);
     }
 }

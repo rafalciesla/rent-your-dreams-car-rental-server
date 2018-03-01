@@ -62,4 +62,9 @@ public class CarController {
         carService.delete(id);
         return new ResponseEntity<>("Car has been deleted", HttpStatus.OK);
     }
+
+    @GetMapping("/requests")
+    public Integer getNumberOfRequests() {
+        return carService.getNumberOfRequests();
+    }
 }

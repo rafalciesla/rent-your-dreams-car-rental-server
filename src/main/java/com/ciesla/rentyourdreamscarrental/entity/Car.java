@@ -2,9 +2,11 @@ package com.ciesla.rentyourdreamscarrental.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -28,6 +30,7 @@ public class Car {
     private Integer rentedToUserId;
     private boolean availability;
 
-    @OneToMany
-    private List<Account> userRequests;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "car_id")
+    private Set<RentalRequest> userRequests;
 }
