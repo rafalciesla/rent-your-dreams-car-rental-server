@@ -12,5 +12,4 @@ public class RentYourDreamsCarRentalApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }
