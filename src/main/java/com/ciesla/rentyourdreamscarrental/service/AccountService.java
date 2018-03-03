@@ -34,8 +34,7 @@ public class AccountService {
     }
 
     public Account showAccountByEmail(String email) {
-        Account account = accountRepository.findAccountByEmail(email);
-        return account;
+        return accountRepository.findAccountByEmail(email);
     }
 
     public void updateAccount(Account account) {

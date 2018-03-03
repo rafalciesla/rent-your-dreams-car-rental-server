@@ -49,7 +49,6 @@ public class CarService {
     }
 
     public Integer getNumberOfRequests() {
-        Integer numberOfRequests = Integer.parseInt(String.valueOf(rentalRequestRepository.count()));
-        return numberOfRequests;
+        return Integer.parseInt(String.valueOf(rentalRequestRepository.count()));
     }
 }

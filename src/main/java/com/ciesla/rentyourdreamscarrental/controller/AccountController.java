@@ -1,7 +1,6 @@
 package com.ciesla.rentyourdreamscarrental.controller;
 
 import com.ciesla.rentyourdreamscarrental.entity.Account;
-import com.ciesla.rentyourdreamscarrental.entity.RentalRequest;
 import com.ciesla.rentyourdreamscarrental.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/account")
@@ -34,11 +32,9 @@ public class AccountController {
 
     @GetMapping("/show/email")
     public Account showAccountByEmail(@RequestParam("email") String email) {
-        Account account = accountService.showAccountByEmail(email);
-        return account;
+        return accountService.showAccountByEmail(email);
     }
 
-    @CrossOrigin(origins = "http://localhost:8383")
     @PostMapping("/mailcheck")
     public ResponseEntity<String> mailCheck(@RequestBody String email) {
         Account account = accountService.showAccountByEmail(email);
@@ -49,7 +45,6 @@ public class AccountController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:8383")
     @PostMapping("/register")
     public ResponseEntity<String> registerAccount(@RequestBody Account account) {
         accountService.save(account);
