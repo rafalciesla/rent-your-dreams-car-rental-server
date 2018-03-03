@@ -35,16 +35,6 @@ public class AccountController {
         return accountService.showAccountByEmail(email);
     }
 
-    @PostMapping("/mailcheck")
-    public ResponseEntity<String> mailCheck(@RequestBody String email) {
-        Account account = accountService.showAccountByEmail(email);
-        if(account == null) {
-            return new ResponseEntity<>(HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.FOUND);
-        }
-    }
-
     @PostMapping("/register")
     public ResponseEntity<String> registerAccount(@RequestBody Account account) {
         accountService.save(account);
