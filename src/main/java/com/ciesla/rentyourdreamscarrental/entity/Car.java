@@ -31,4 +31,5 @@ public class Car {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id")
     private Set<RentalRequest> userRequests;
+
 }
